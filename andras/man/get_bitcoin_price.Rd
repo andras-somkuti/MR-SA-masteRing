@@ -4,7 +4,7 @@
 \alias{get_bitcoin_price}
 \title{Hitting the binance API to get the most recent price of Bitcoin in USD}
 \usage{
-get_bitcoin_price()
+get_bitcoin_price(retried = 0)
 }
 \arguments{
 \item{retried}{the number of retries previously done before the exponential backoff sleep}

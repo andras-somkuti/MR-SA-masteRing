@@ -2,13 +2,15 @@
 #' @export
 #' @param retried the number of retries previously done before the exponential backoff sleep
 #' @importFrom binancer binance_coins_prices
-get_bitcoin_price <- function() {
+#' @import data.table
+get_bitcoin_price <- function(retried = 0) {
   tryCatch(
     binance_coins_prices()[symbol == "BTC", usd],
 
     error = function(e) {
-      sys.sleep(1 + retried^2)
-      get_bitcoin_price(retried = retried + 1)
+      Sys.sleep(1 + retried^2)
+      # get_bitcoin_price(retried = retried + 1)
+      return(e)
     })
 }
 
@@ -17,4 +19,30 @@ get_bitcoin_price <- function() {
 #' @param x amount
 forint <- function(x) {
   dollar(x, prefix = '', suffix = 'Ft')
+}
+
+#' @export
+#' @importFrom httr GET
+#' @param target target currency
+#' @param base base currency
+#' @param days number of days from today for historical conversion rates
+
+convert_currency <- function(target, base, days) {
+  response <- GET(
+    'https://api.exchangeratesapi.io/history',
+    query = list(
+      start_at = Sys.Date() - days,
+      end_at   = Sys.Date(),
+      base     = base,
+      symbols  = target
+    ))
+
+  exchange_rates <- content(response)$rates
+
+  tmp <- data.table(
+    date = as.Date(names(exchange_rates)),
+    pair = as.numeric(unlist(exchange_rates)))
+
+  colnames(tmp)[2] <- paste0(base, target)
+  tmp
 }
