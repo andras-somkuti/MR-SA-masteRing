@@ -1,11 +1,7 @@
-#' Dummy function
+#' Hitting the binance API to get the most recent price of Bitcoin in USD
 #' @export
-
-hello <- function() {
-  print("Hello, world!")
-}
-
-
+#' @param retried the number of retries previously done before the exponential backoff sleep
+#' @importFrom binancer binance_coins_prices
 get_bitcoin_price <- function() {
   tryCatch(
     binance_coins_prices()[symbol == "BTC", usd],
@@ -16,6 +12,9 @@ get_bitcoin_price <- function() {
     })
 }
 
+#' @export
+#' @importFrom scales dollar
+#' @param x amount
 forint <- function(x) {
   dollar(x, prefix = '', suffix = 'Ft')
 }
