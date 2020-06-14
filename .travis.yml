@@ -3,6 +3,5 @@
 language: R
 cache: packages
 sudo: required
-script:
+before_install:
   - cd andras
-  - R CMD build
