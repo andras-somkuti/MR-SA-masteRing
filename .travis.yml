@@ -2,8 +2,7 @@
 
 language: R
 cache: packages
-<<<<<<< HEAD:.travis.yml
-=======
-warnings_are_errors: true
 sudo: required
->>>>>>> 7b7a9d090c8148edb499053c268d5efa7f23d19c:andras/.travis.yml
+script:
+  - cd andras
+  - R CMD build
