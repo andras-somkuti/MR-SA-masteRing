@@ -14,13 +14,15 @@ get_bitcoin_price <- function(retried = 0) {
     })
 }
 
+
 #' @export
+#' @rdname get_bitcoin_price
 #' @importFrom scales dollar
 #' @param x amount
 forint <- function(x) {
   dollar(x, prefix = '', suffix = 'Ft')
 }
-
+#' @rdname get_bitcoin_price
 #' @export
 #' @importFrom httr GET
 #' @param target target currency
