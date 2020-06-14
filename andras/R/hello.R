@@ -23,7 +23,6 @@ forint <- function(x) {
 }
 #' @rdname get_bitcoin_price
 
-
 #' #' @export
 #' #' @param target target currency
 #' #' @param base base currency
@@ -51,4 +50,3 @@ forint <- function(x) {
 #'   tmp
 #' }
 #'
-#' # hello darkness my old friend
