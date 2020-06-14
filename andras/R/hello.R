@@ -14,7 +14,6 @@ get_bitcoin_price <- function(retried = 0) {
     })
 }
 
-
 #' @export
 #' @rdname get_bitcoin_price
 #' @importFrom scales dollar
@@ -48,3 +47,5 @@ convert_currency <- function(target, base, days) {
   colnames(tmp)[2] <- paste0(base, target)
   tmp
 }
+
+# hello darkness my old friend
