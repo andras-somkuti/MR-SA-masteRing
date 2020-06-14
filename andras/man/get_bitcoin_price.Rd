@@ -3,25 +3,16 @@
 \name{get_bitcoin_price}
 \alias{get_bitcoin_price}
 \alias{forint}
-\alias{convert_currency}
 \title{Hitting the binance API to get the most recent price of Bitcoin in USD}
 \usage{
 get_bitcoin_price(retried = 0)
 
 forint(x)
-
-convert_currency(target, base, days)
 }
 \arguments{
 \item{retried}{the number of retries previously done before the exponential backoff sleep}
 
 \item{x}{amount}
-
-\item{target}{target currency}
-
-\item{base}{base currency}
-
-\item{days}{number of days from today for historical conversion rates}
 }
 \description{
 Hitting the binance API to get the most recent price of Bitcoin in USD
