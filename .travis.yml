@@ -4,4 +4,4 @@ language: R
 cache: packages
 sudo: required
 before_install:
-  - cd subdirectory
+  - cd andras
